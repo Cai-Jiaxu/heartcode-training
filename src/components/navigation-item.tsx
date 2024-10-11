@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from "../ui/navigation-menu";
+import { NavigationMenuItem, NavigationMenuLink, navigationMenuTriggerStyle } from "./ui/navigation-menu";
 
 export interface NavItem {
 	navigationLink: string;
