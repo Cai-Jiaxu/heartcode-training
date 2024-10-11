@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { insertOneUser } from 
+import { insertOneUser } from "../server/user";
 
 const FormSchema = z.object({
 	name: z.string({
@@ -18,7 +18,7 @@ const FormSchema = z.object({
 	}).max(20, {
     	message: "name must be no longer than 20 characters"
 	}),
-	question1: z.string({
+	isDrugDealer: z.string({
     	required_error: "Please select an option"
 	})
 })
@@ -27,11 +27,15 @@ export default function Quiz() {
 	const { toast } = useToast();
 
 	const form = useForm<z.infer<typeof FormSchema>>({
-    	resolver: zodResolver(FormSchema)
+    	resolver: zodResolver(FormSchema),
+		defaultValues: {
+			name: "",
+			isDrugDealer: "",
+		}
 	})
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
-    	if (data.question1 === "yes") {
+	async function onSubmit(data: z.infer<typeof FormSchema>) {
+    	if (data.isDrugDealer === "yes") {
         	toast({
             	title: `Congratulations ${data.name}`,
             	description: "You are a drug dealer",
@@ -42,6 +46,7 @@ export default function Quiz() {
             	description: "Unfortunately you are not a drug dealer",
         	})
     	}
+		await insertOneUser(data.name, data.isDrugDealer === "yes")
 }
 
 
@@ -65,7 +70,7 @@ export default function Quiz() {
             	/>
             	<FormField
                 	control={form.control}
-                	name="question1"
+                	name="isDrugDealer"
                 	render={({ field }) => (
                     	<FormItem>
                         	<FormLabel>Question 2:</FormLabel>
