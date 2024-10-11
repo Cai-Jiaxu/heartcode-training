@@ -16,14 +16,14 @@ export function NavigationBar() {
             <NavigationMenuItem>
                 <Link href="/quiz" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        Quiz
+                        Not Kahoot
                     </NavigationMenuLink>
                 </Link>
             </NavigationMenuItem>
             <NavigationMenuItem>
                 <Link href="/about-me" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        About me
+                        About 
                     </NavigationMenuLink>
                 </Link>
             </NavigationMenuItem>
