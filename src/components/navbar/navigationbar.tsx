@@ -16,7 +16,7 @@ export function NavigationBar() {
             <NavigationMenuItem>
                 <Link href="/quiz" legacyBehavior passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                        Not Kahoot
+                        ???
                     </NavigationMenuLink>
                 </Link>
             </NavigationMenuItem>
